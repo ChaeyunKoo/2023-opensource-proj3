@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Info Result with Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* 지도의 크기를 조절하는 스타일 */
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>서울특별시 버스위치조회 서비스</h1>
+    <p>검색 결과는 아래와 같습니다. 지도를 이용하여 버스의 위치를 확인하세요.</p>
+    <p>차량번호: {{ bus_info.plainNo }}</p>
+    <p>X 좌표: {{ bus_info.tmX }}</p>
+    <p>Y 좌표: {{ bus_info.tmY }}</p>
+    <p>노선 ID: {{ bus_info.routeId }}</p>
+
+    <!-- 지도를 표시할 div -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <!-- 지도를 표시하는 스크립트 -->
+    <script>
+        // 지도를 생성하고 해당 좌표에 마커를 추가
+        var map = L.map('map').setView([{{ bus_info.tmY }}, {{ bus_info.tmX }}], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([{{ bus_info.tmY }}, {{ bus_info.tmX }}]).addTo(map);
+    </script>
+</body>
+</html>
