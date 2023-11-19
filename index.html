@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Info</title>
+</head>
+<body>
+    <h1>서울특별시 버스위치조회 서비스</h1>
+    <form action="/get_bus_info" method="post">
+        <p>검색하고 싶은 버스의 노선ID 및 시작 정류소, 종료 정류소 순번을 차례로 입력하세요!</p>
+        <label for="bus_route_id">노선 ID:</label>
+        <input type="text" name="bus_route_id" required>
+        <br>
+        <label for="start_ord">시작 정류소 순번:</label>
+        <input type="text" name="start_ord" required>
+        <br>
+        <label for="end_ord">종료 정류소 순번:</label>
+        <input type="text" name="end_ord" required>
+        <br>
+        <button type="submit">Get Bus Info</button>
+    </form>
+</body>
+</html>
